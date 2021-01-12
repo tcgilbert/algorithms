@@ -16,13 +16,22 @@ def merge_sort(l):
 
 def merge(left, right):
     results = []
-    if left[0] >= right[0]:
-        results.append(left[0])
-        results.append(right[0])
-    else:
-        results.append(right[0])
-        results.append(left[0])
+    indexL, indexR = 0, 0
+
+    while indexL < len(left) and indexR < len(right):
+        
+        if left[indexL] < right[indexR]:
+            results.append(left[indexL])
+            indexL += 1
+        else:
+            results.append(left[indexR])
+            indexR += 1
+    results.extend(left[indexL:])
+    results.extend(right[indexR:])
+
     return results
+
+
 
 
     
