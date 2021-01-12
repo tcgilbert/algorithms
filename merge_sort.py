@@ -15,24 +15,27 @@ def merge_sort(l):
     return merge(left, right)
 
 def merge(left, right):
-    results = []
-    indexL, indexR = 0, 0
+    result = []
+    combined_list_length = len(left) + len(right)
+    while len(result) < combined_list_length:
 
-    while indexL < len(left) and indexR < len(right):
-        
-        if left[indexL] < right[indexR]:
-            results.append(left[indexL])
-            indexL += 1
+        if len(left) == 0:
+            result += right
+            right = []
+        elif len(right) == 0:
+            result += left
+            left = []
+        elif left[0] < right[0]:
+            result.append(left[0])
+            left = left[1:]
         else:
-            results.append(left[indexR])
-            indexR += 1
-    results.extend(left[indexL:])
-    results.extend(right[indexR:])
+            result.append(right[0])
+            right = right[1:]
 
-    return results
+    return result
 
 
 
+print(merge_sort(array_to_sort))
 
     
-print(merge_sort(array_to_sort))
